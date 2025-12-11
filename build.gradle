@@ -1,0 +1,75 @@
+// Root build.gradle for the Maze Game Engine
+// 
+// This file configures the Gradle multi-project build system for the maze game.
+// It sets up the main application, JavaFX integration, PMD code quality checks,
+// and ANTLR grammar processing as required by the assignment specifications.
+// 
+// Project Structure:
+// - Root project: Main application entry point
+// - core: Core game logic, GUI, and game state management
+// - api: Interface definitions for plugins and scripts
+// - plugins: Plugin implementations (Teleport, Penalty, Reveal, Prize)
+// 
+// Key Features:
+// - JavaFX GUI application
+// - ANTLR DSL parsing for input files
+// - PMD code quality enforcement
+// - Multi-project dependency management
+// - Plugin and script loading capabilities
+
+plugins {
+    id "java"                                    // Java compilation and testing
+    id "application"                             // Application packaging and running
+    id "pmd"                                     // Code quality analysis
+    id "org.openjfx.javafxplugin" version "0.1.0" // JavaFX integration
+    id "antlr"                                   // ANTLR grammar processing
+}
+
+// Global project configuration
+allprojects {
+    group = 'edu.curtin'                         // Package group for all subprojects
+    version = '1.0.0'                            // Version number for all modules
+}
+
+// Repository configuration
+repositories {
+    mavenCentral()                               // Standard Maven repository for dependencies
+}
+
+// Dependencies for the root project
+dependencies {
+    implementation project(':core')              // Include core game module
+}
+
+// Application configuration
+application {
+    mainClass = "edu.curtin.game.MazeGameApp"   // Main entry point for the game
+}
+
+// JavaFX configuration
+javafx {
+    version = "19.0.2.1"                        // JavaFX version compatible with Java 11
+    modules = [ "javafx.controls" ]             // Required JavaFX modules
+}
+
+// PMD code quality configuration
+pmd {
+    consoleOutput = true                         // Show PMD output in console
+    toolVersion = "7.15.0"                      // PMD version
+    rulesMinimumPriority = 5                     // Minimum rule priority to report
+    ruleSets = []                                // Clear default rule sets
+    ruleSetFiles = files("saed-pmd-rules.xml")   // Use assignment-specific rules
+}
+
+// Java compilation configuration
+tasks.withType(JavaCompile) {
+    options.compilerArgs << "-Xlint:all,-serial" // Enable all linting except serial warnings
+}
+
+// Commented out environment configuration (not needed for this project)
+// tasks.named("run") {
+//     environment["PATH"] = (
+//         layout.projectDirectory.dir("comms").dir("bin").toString()
+//         + File.pathSeparator
+//         + System.getenv("PATH"))
+// }

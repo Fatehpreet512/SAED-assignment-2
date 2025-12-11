@@ -1,0 +1,21 @@
+// Gradle settings for the Maze Game Engine multi-project build
+// 
+// This file defines the project structure and includes all subprojects
+// required for the maze game implementation as specified in the assignment.
+// 
+// Project Structure:
+// - maze-game-engine (root): Main application and build configuration
+// - core: Core game logic, GUI, game state, and input file parsing
+// - api: Interface definitions for plugins and scripts
+// - plugins: Plugin implementations (Teleport, Penalty, Reveal, Prize)
+// 
+// The multi-project structure allows for:
+// - Modular code organization
+// - Separate compilation of different components
+// - Independent testing of modules
+// - Clear separation of concerns between core game and extensions
+
+rootProject.name = 'maze-game-engine'    // Root project name
+include 'core'                           // Core game module
+include 'api'                            // API interfaces module
+include 'plugins'                        // Plugin implementations module

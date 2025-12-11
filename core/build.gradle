@@ -1,0 +1,71 @@
+// Core module build configuration for the Maze Game Engine
+// 
+// This file configures the core game module which contains:
+// - Main application class (MazeGameApp)
+// - Game state management (GameState)
+// - GUI components (GridArea, GridAreaIcon)
+// - Input file parsing (GameConfigParser)
+// - Plugin and script management (PluginManager, ScriptManager)
+// - Game API implementation (GameAPIImpl)
+// 
+// Dependencies:
+// - api: Interface definitions for plugins and scripts
+// - plugins: Plugin implementations
+// - Jython: Python script execution
+// - ANTLR: DSL grammar processing
+// - JavaFX: GUI framework
+
+plugins {
+    id 'java'                                    // Java compilation
+    id 'application'                             // Application packaging
+    id 'pmd'                                     // Code quality analysis
+    id 'org.openjfx.javafxplugin' version '0.1.0' // JavaFX integration
+    id 'antlr'                                   // ANTLR grammar processing
+}
+
+repositories {
+    mavenCentral()                               // Maven repository for dependencies
+}
+
+dependencies {
+    implementation project(':api')               // API interfaces
+    implementation project(':plugins')           // Plugin implementations
+    implementation 'org.python:jython-standalone:2.7.3' // Python script execution
+    antlr 'org.antlr:antlr4:4.13.1'              // ANTLR grammar processing
+}
+
+application {
+    mainClass = 'edu.curtin.game.MazeGameApp'   // Main application entry point
+}
+
+javafx {
+    version = '19.0.2.1'                        // JavaFX version
+    modules = ['javafx.controls']               // Required JavaFX modules
+}
+
+pmd {
+    consoleOutput = true                         // Show PMD output in console
+    toolVersion = '7.15.0'                      // PMD version
+    rulesMinimumPriority = 5                     // Minimum rule priority
+    ruleSets = []                                // Clear default rules
+    ruleSetFiles = files('../saed-pmd-rules.xml') // Use assignment rules
+}
+
+tasks.withType(JavaCompile) {
+    options.compilerArgs << '-Xlint:all,-serial' // Enable linting
+}
+
+// ANTLR grammar generation configuration
+generateGrammarSource {
+    arguments += ['-package', 'edu.curtin.game.parser'] // Set package for generated files
+    outputDirectory = file('src/main/java/edu/curtin/game/parser') // Output directory
+}
+
+// Source sets configuration
+sourceSets {
+    main {
+        java {
+            srcDirs += 'src/main/java/edu/curtin/game/parser' // Include generated ANTLR files
+        }
+    }
+}

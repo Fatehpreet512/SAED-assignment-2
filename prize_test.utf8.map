@@ -1,0 +1,13 @@
+size (5,5)
+start (0,0)
+goal (4,4)
+
+item "Red Key" { at (1,0) message "A red key!" }
+item "Blue Key" { at (2,0) message "A blue key!" }
+item "Green Key" { at (3,0) message "A green key!" }
+
+obstacle { at (0,1) requires "Red Key" }
+obstacle { at (0,2) requires "Blue Key" }
+
+plugin edu.curtin.gameplugins.Prize
+

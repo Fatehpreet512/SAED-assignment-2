@@ -1,0 +1,9 @@
+size (3,3)
+start (1,1)
+goal (2,2)
+
+item "Test Item" { at (0,0) message "Test message" }
+
+obstacle { at (1,0) requires "Test Item" }
+
+plugin edu.curtin.gameplugins.Penalty

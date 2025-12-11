@@ -1,0 +1,43 @@
+size (3,11)
+start (0,10)
+goal (2,7)
+plugin DNTU.ZVV.axl.mlLnG.Fz.DYfg
+
+item   "superlative yellow cloak"
+ {at(
+  2
+   ,
+   4   )    ,  (
+0 ,   4 )  message "LHL"   }  obstacle {
+  at (1,2)
+  requires "superlative yellow cloak"
+}
+
+script !{
+giHn,aCT32_Y:h
+lHfX =[4%tJ?H#vMu*E0rnM60w:%Vb?J^rbx
+pPAK"'?rw%ST|q/\RPxaJDWOIu0&l
+t<HT'?b7)4h;Ox`J;+0/-$^.d#3*yds+b
+{@u,>,y:d[>[vvWXTxb|CcduNU,950..H
+}
+
+obstacle {
+  at (2,2), (1,8)
+  requires "superlative yellow cloak"
+}
+
+plugin Fj.ONe.oIN
+
+plugin ZqH.GllFd.dgSPd.qVb.yU.Ixxv
+
+plugin XZvLL.Gt.kHr.QQ.Zy.yDV
+
+obstacle {
+  at (0,10), (2,0)
+  requires "superlative yellow cloak"
+}
+
+obstacle {
+  at (2,7)
+  requires "superlative yellow cloak"
+}

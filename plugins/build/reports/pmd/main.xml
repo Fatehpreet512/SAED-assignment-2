@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 https://pmd.github.io/schema/report_2_0_0.xsd" version="7.15.0" timestamp="2025-10-22T02:45:05.868">
+<file name="/Users/fatehpreetsingh/Downloads/2025_assignment1_start_javafx/plugins/src/main/java/edu/curtin/gameplugins/Penalty.java">
+<violation beginline="44" endline="56" begincolumn="9" endcolumn="10" rule="ConfusingTernary" ruleset="Code Style" package="edu.curtin.gameplugins" class="Penalty" method="onPlayerMove" externalInfoUrl="https://docs.pmd-code.org/pmd-doc-7.15.0/pmd_rules_java_codestyle.html#confusingternary" priority="3">
+Avoid if (x != y) ..; else ..;
+</violation>
+</file>
+</pmd>

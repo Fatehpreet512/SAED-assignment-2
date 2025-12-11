@@ -1,0 +1,27 @@
+size (5, 5)
+start (0, 0)
+goal (4, 4)
+
+item "Red Key" {
+    at (1, 1)
+    message "A shiny red key!"
+}
+
+item "Blue Key" {
+    at (3, 1)
+    message "A beautiful blue key!"
+}
+
+obstacle {
+    at (2, 2)
+    requires "Red Key"
+}
+
+obstacle {
+    at (4, 3)
+    requires "Red Key", "Blue Key"
+}
+
+plugin edu.curtin.gameplugins.Teleport
+plugin edu.curtin.gameplugins.Reveal
+
